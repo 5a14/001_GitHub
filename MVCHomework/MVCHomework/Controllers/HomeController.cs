@@ -5,12 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVCHomework.Models;
+using MVCHomework.Service;
 
 namespace MVCHomework.Controllers
 {
     public class HomeController : Controller
     {
-        SkillTreeHomeworkEntities db = new SkillTreeHomeworkEntities();
+        //SkillTreeHomeworkEntities db = new SkillTreeHomeworkEntities();
+        BookkeepingService service = new BookkeepingService();
 
         public ActionResult Index()
         {
@@ -20,48 +22,14 @@ namespace MVCHomework.Controllers
         //帳本記錄
         public ActionResult Record()
         {
+            //宣告List<BookkeepingViewModels>型態
             var ListBookkeeping = new List<BookkeepingViewModels>();
+            //從Service層抓資料
+            ListBookkeeping.AddRange(service.RecordService().ToList());
 
-            #region
-
-            ////亂數種子
-            //Random rdm = new Random();
-
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    var Bookkeeping = new BookkeepingViewModels();
-
-            //    ////類別與金額的隨機資料
-            //    //int intRdm = rdm.Next(1, 1500);
-
-            //    ////類別資料
-            //    //Bookkeeping.category = ((intRdm % 2 == 0) ? "支出" : "收入");
-            //    ////金額
-            //    //Bookkeeping.money = intRdm;
-            //    ////日期
-            //    //Bookkeeping.date = DateTime.Now.AddDays(-i);
-
-            //    ////資料加入List中
-            //    //ListBookkeeping.Add(Bookkeeping);
-            //}
-            #endregion
-
-            foreach (var Item in db.AccountBook)
-            {
-                var Bookkeeping = new BookkeepingViewModels();
-
-                //類別資料
-                Bookkeeping.category = Item.Categoryyy == 0? "支出":"收入";
-                //金額
-                Bookkeeping.money = Item.Amounttt;
-                //日期
-                Bookkeeping.date = Item.Dateee;
-
-                //資料加入List中
-                ListBookkeeping.Add(Bookkeeping);
-            }
-
+            //回傳資料
             return View(ListBookkeeping);
+
         }
 
 
