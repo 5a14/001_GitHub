@@ -21,7 +21,9 @@ namespace MVCHomework.Controllers
             _bookkeepingService = new BookkeepingService(_unitofWork);
         }
 
+
         //帳本記錄
+        [ChildActionOnly]
         public ActionResult Record()
         {
             return View(_bookkeepingService.Lookup());

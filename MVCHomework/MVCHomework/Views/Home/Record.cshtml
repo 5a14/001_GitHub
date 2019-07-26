@@ -20,21 +20,21 @@
             @foreach (var Item in Model)
             {
                 Index++;
-                <tr>
-                    <td>
-                        @Index.ToString()
-                    </td>
+            <tr>
+                <td>
+                    @Index.ToString()
+                </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => Item.category)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => Item.date)
-                    </td>
-                    <td>
-                        $@Html.DisplayFor(modelItem => Item.money)
-                    </td>
-                </tr>
+                @*利用Helper修改文字顏色*@
+                @TextDiscolorHelper.TextDiscolor(Item.category.ToString())
+
+                <td>
+                    @Html.DisplayFor(modelItem => Item.date)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => Item.money)
+                </td>
+            </tr>
             }
 
 

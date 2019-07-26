@@ -5,7 +5,7 @@
 }
 
 <div class="well">
-    
+
     <form class="form-horizontal">
 
         <div class="form-group">
@@ -13,10 +13,10 @@
             <div class="col-sm-10">
                 <select class="form-control" id="category">
                     <option value="" selected="selected">請選擇</option>
-                    <option value="支出" >支出</option>
-                    <option value="收入" >收入</option>
+                    <option value="支出">支出</option>
+                    <option value="收入">收入</option>
                 </select>
-                
+
             </div>
         </div>
 
@@ -44,4 +44,12 @@
 </div>
 
 @Html.Action("Record")
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+}
 

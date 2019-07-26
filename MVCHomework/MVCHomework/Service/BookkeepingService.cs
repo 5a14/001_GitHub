@@ -10,8 +10,6 @@ namespace MVCHomework.Service
 {
     public class BookkeepingService
     {
-
-
         private readonly IRepository<AccountBook> _accountBookRepository;
 
         public BookkeepingService(IUnitOfWork unitOfWork)

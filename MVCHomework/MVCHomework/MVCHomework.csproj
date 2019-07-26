@@ -196,6 +196,7 @@
     <Content Include="Models\DBModels.edmx.diagram">
       <DependentUpon>DBModels.edmx</DependentUpon>
     </Content>
+    <Content Include="App_Code\TextDiscolorHelper.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
