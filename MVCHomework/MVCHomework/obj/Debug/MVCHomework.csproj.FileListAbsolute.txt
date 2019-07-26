@@ -267,3 +267,4 @@ D:\MyWeb\Project\LearnMVC\MVCHomework_0720\MVCHomework\bin\zh-Hant\System.Web.We
 D:\MyWeb\Project\LearnMVC\MVCHomework_0720\MVCHomework\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 D:\MyWeb\Project\LearnMVC\MVCHomework_0720\MVCHomework\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
 D:\MyWeb\Project\LearnMVC\MVCHomework_0720\MVCHomework\obj\Debug\MVCHomework.csproj.CopyComplete
+D:\MyWeb\Project\LearnMVC\MVCHomework_0720\MVCHomework\obj\Debug\MVCHomework.csprojAssemblyReference.cache

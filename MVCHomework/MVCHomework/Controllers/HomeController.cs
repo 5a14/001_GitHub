@@ -6,30 +6,32 @@ using System.Web;
 using System.Web.Mvc;
 using MVCHomework.Models;
 using MVCHomework.Service;
+using MVCHomework.Repository;
 
 namespace MVCHomework.Controllers
 {
     public class HomeController : Controller
     {
-        //SkillTreeHomeworkEntities db = new SkillTreeHomeworkEntities();
-        BookkeepingService service = new BookkeepingService();
+        private readonly BookkeepingService _bookkeepingService;
+        private readonly UnitOfWork _unitofWork;
 
-        public ActionResult Index()
+        public HomeController()
         {
-            return View();
+            _unitofWork = new UnitOfWork();
+            _bookkeepingService = new BookkeepingService(_unitofWork);
         }
 
         //帳本記錄
         public ActionResult Record()
         {
-            //宣告List<BookkeepingViewModels>型態
-            var ListBookkeeping = new List<BookkeepingViewModels>();
-            //從Service層抓資料
-            ListBookkeeping.AddRange(service.RecordService().ToList());
+            return View(_bookkeepingService.Lookup());
+        }
 
-            //回傳資料
-            return View(ListBookkeeping);
 
+
+        public ActionResult Index()
+        {
+            return View();
         }
 
 

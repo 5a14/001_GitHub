@@ -1,5 +1,6 @@
 ﻿using MVCHomework.Models;
 using MVCHomework.Models.ViewModels;
+using MVCHomework.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,26 +10,28 @@ namespace MVCHomework.Service
 {
     public class BookkeepingService
     {
-        SkillTreeHomeworkEntities db = new SkillTreeHomeworkEntities();
 
-        public List<BookkeepingViewModels> RecordService()
+
+        private readonly IRepository<AccountBook> _accountBookRepository;
+
+        public BookkeepingService(IUnitOfWork unitOfWork)
         {
-            var Result = new List<BookkeepingViewModels>();
-            var Bookkeeping = new BookkeepingViewModels();
-
-            foreach (var Item in db.AccountBook)
-            {
-                //類別
-                Bookkeeping.category = Item.Categoryyy == 0 ? "支出":"收入";
-                //金額
-                Bookkeeping.money = Item.Amounttt;
-                //日期
-                Bookkeeping.date = Item.Dateee;
-
-                Result.Add(Bookkeeping);
-            }
-
-            return Result;
+            _accountBookRepository = new Repository<AccountBook>(unitOfWork);
         }
-}
+
+
+        public IEnumerable<BookkeepingViewModels> Lookup()
+        {
+            var source = _accountBookRepository.LookupAll();
+            var result = source.Select(s => new BookkeepingViewModels()
+            {
+                category = (categoryType)s.Categoryyy,
+                money = s.Amounttt,
+                date = s.Dateee,
+                description = s.Remarkkk
+            });
+            return result;
+        }
+
+    }
 }
